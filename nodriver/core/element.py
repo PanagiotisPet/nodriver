@@ -603,10 +603,10 @@ class Element:
         :return: None
         """
         await self.apply("(elem) => elem.focus()")
-        [
+
+        for char in text:
             await self._tab.send(cdp.input_.dispatch_key_event("char", text=char))
-            for char in list(text)
-        ]
+            await asyncio.sleep(0.02
 
     async def send_file(self, *file_paths: PathLike):
         """
